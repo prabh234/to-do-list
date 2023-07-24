@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" id="heading">
+        <h1><%= title %></h1>
+    </div>
+    <div class="box">
+        <% addItem.forEach(item => { %>
+        <div class="itm">
+            <form class="itm" action="/del" method="post">
+                <input type="hidden" name="list" value="<%= title %>"></input>
+                <input type="checkbox" name="checkedItem" value="<%=item.id %>" onChange="this.form.submit()">
+                <p><%= item.name %></p>
+            </form>
+        </div>         
+        <% }) %>
+
+        <form action="/" method="post">
+            <input type="text" name="items" autocomplete="off" placeholder="new items">
+            <button type="submit" name="list" value="<%= title %>">+</button>
+        </form>
+    </div>
+</body>
+</html>
